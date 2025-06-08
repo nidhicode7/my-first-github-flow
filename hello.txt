@@ -1,5 +1,4 @@
 This is a new line in the feature branch!
 
 HI I AM TESTING GITHUB
-Hello, GitHub World!!!!
-....
+Hello, GitHub World!
