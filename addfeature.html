@@ -1,0 +1,87 @@
+--- a/index.html
++++ b/index.html
+@@
+     footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+     @media (max-width:760px){.hero{grid-template-columns:1fr}nav{display:none}}
++
++    /* New testimonial carousel styles */
++    .carousel{margin:20px 0;overflow:hidden;position:relative;height:120px}
++    .carousel-inner{display:flex;transition:transform .5s ease-in-out}
++    .testimonial{flex:0 0 100%;text-align:center;padding:10px}
++    .testimonial p{font-style:italic;color:var(--muted)}
++    .testimonial strong{display:block;margin-top:6px;color:#111}
++    .carousel-controls{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%)}
++    .carousel-controls button{background:var(--accent);border:none;color:#fff;padding:6px 10px;border-radius:50%;cursor:pointer}
+   </style>
+ </head>
+ <body>
+@@
+       <nav>
+         <a href=\"#features\">Features</a>
+         <a href=\"#contact\">Contact</a>
++        <a href=\"#testimonials\">Testimonials</a>
+       </nav>
+     </header>
+ 
+@@
+             <label for=\"msg\">Message</label>
+             <textarea id=\"msg\" name=\"msg\" rows=\"4\" placeholder=\"Tell us a bit\" required></textarea>
+-            <button type=\"button\" onclick=\"submitDemo()\" class=\"cta\">Send</button>
++            <button type=\"button\" onclick=\"submitDemo()\" class=\"cta\" aria-label=\"Send demo request\">Send</button>
+           </form>
+         </div>
+       </aside>
+     </section>
++
++    <!-- New testimonial carousel feature -->
++    <section id=\"testimonials\" class=\"card\">
++      <h2>What people say</h2>
++      <div class=\"carousel\">
++        <div class=\"carousel-inner\" id=\"carousel-inner\">
++          <div class=\"testimonial\">
++            <p>“SafeGuardian gave us peace of mind during a flood emergency.”</p>
++            <strong>— Community Leader</strong>
++          </div>
++          <div class=\"testimonial\">
++            <p>“The alerts were fast and helped our team act quickly.”</p>
++            <strong>— Rescue Volunteer</strong>
++          </div>
++          <div class=\"testimonial\">
++            <p>“Simple, effective, and reliable in critical times.”</p>
++            <strong>— Local Authority</strong>
++          </div>
++        </div>
++        <div class=\"carousel-controls\">
++          <button onclick=\"prevTestimonial()\" aria-label=\"Previous testimonial\">‹</button>
++          <button onclick=\"nextTestimonial()\" aria-label=\"Next testimonial\">›</button>
++        </div>
++      </div>
++    </section>
+@@
+     // Small accessibility improvement: focus styles via keyboard
+     document.body.addEventListener('keydown', (e)=>{
+       if(e.key === 'Tab') document.documentElement.style.outline = 'none';
+     });
++
++    // Carousel functionality
++    let currentIndex = 0;
++    const carouselInner = document.getElementById('carousel-inner');
++    const testimonials = document.querySelectorAll('.testimonial');
++
++    function showTestimonial(index){
++      const offset = -index * 100;
++      carouselInner.style.transform = 'translateX(' + offset + '%)';
++    }
++
++    function prevTestimonial(){
++      currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
++      showTestimonial(currentIndex);
++    }
++
++    function nextTestimonial(){
++      currentIndex = (currentIndex + 1) % testimonials.length;
++      showTestimonial(currentIndex);
++    }
+   </script>
+ </body>
+ </html>
