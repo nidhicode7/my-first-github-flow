@@ -1,0 +1,114 @@
+<!-- File: index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SafeGuardian — Demo Page</title>
+  <meta name="description" content="Simple demo page for SafeGuardian project." />
+  <style>
+    :root{--bg:#f7f8fb;--card:#ffffff;--accent:#ff6b6b;--muted:#6b7280}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{background:linear-gradient(180deg,var(--bg),#eef2ff);color:#111}
+    .wrap{max-width:980px;margin:36px auto;padding:28px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .dot{width:42px;height:42px;border-radius:10px;background:var(--accent);display:inline-block}
+    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:center;margin-bottom:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,.06)}
+    h1{margin:0 0 8px;font-size:28px}
+    p.lead{margin:0;color:var(--muted)}
+    .features{display:flex;gap:12px;margin-top:14px}
+    .feat{flex:1;padding:12px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfcff);text-align:center}
+    .feat h3{margin:8px 0 4px;font-size:16px}
+    .cta{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;margin-top:12px}
+    form{display:flex;flex-direction:column;gap:8px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid #e6e9ef}
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+    @media (max-width:760px){.hero{grid-template-columns:1fr}nav{display:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <span class="dot" aria-hidden></span>
+        <div>
+          <strong>SafeGuardian</strong>
+          <div style="font-size:12px;color:var(--muted)">Disaster response demo</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h1>Fast. Reliable. Ready.</h1>
+          <p class="lead">SafeGuardian helps coordinate rescue teams, prioritize dispatch, and visualize hotspots — simple demo UI to explain the idea.</p>
+          <div class="features" id="features">
+            <div class="feat">
+              <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden focusable="false"><circle cx="12" cy="12" r="10" fill="#fce8e8"/></svg>
+              <h3>Realtime Alerts</h3>
+              <div style="font-size:13px;color:var(--muted)">Push notifications and SMS</div>
+            </div>
+            <div class="feat">
+              <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden focusable="false"><rect width="24" height="24" rx="4" fill="#eef6ff"/></svg>
+              <h3>Map Hotspots</h3>
+              <div style="font-size:13px;color:var(--muted)">Heatmaps & clustering</div>
+            </div>
+          </div>
+          <a href="#contact" class="cta">Get in touch</a>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Request a demo</h3>
+          <form id="contact">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            <label for="msg">Message</label>
+            <textarea id="msg" name="msg" rows="4" placeholder="Tell us a bit" required></textarea>
+            <button type="button" onclick="submitDemo()" class="cta">Send</button>
+          </form>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div class="card">
+        <small>© SafeGuardian demo — built for learning. Not production-ready.</small>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function submitDemo(){
+      const name = document.getElementById('name').value.trim();
+      if(!name){alert('Please enter your name');return}
+      alert('Thanks, ' + name + '! We\'ll reach out soon.');
+    }
+
+    // Small accessibility improvement: focus styles via keyboard
+    document.body.addEventListener('keydown', (e)=>{
+      if(e.key === 'Tab') document.documentElement.style.outline = 'none';
+    });
+  </script>
+</body>
+</html>
+
+
+<!-- File: README_CHANGE.md -->
+
+
+Suggested change for the feature branch: update the hero headline and add an `aria-label` to the demo button for accessibility. The change is small so you can easily review diffs.
+
+
+<!-- End of files -->
